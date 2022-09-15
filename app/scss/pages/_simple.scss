@@ -1,0 +1,16 @@
+@use "__config" as *;
+
+.section {
+   padding-top: rem(30);
+}
+
+.section:last-of-type {
+   padding-bottom: rem(30);
+}
+
+.gallery {
+   display: flex;
+   aspect-ratio: 3/1;
+   overflow: hidden;
+   gap: rem(20);
+}

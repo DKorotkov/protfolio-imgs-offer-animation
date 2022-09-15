@@ -1,0 +1,182 @@
+@use "__config" as *;
+
+.offer {
+
+    --clip-path-1: polygon(0% 0%, 0% 100%, 10% 100%, 10% 20%, 49% 20%, 49% 55%, 49% 55%, 49% 85%, 10% 85%, 10% 100%, 51% 100%, 51% 60%, 71% 60%, 71% 60%, 90% 60%, 90% 80%, 51% 80%, 51% 100%, 100% 100%, 100% 0%, 71% 0%, 71% 55%, 51% 55%, 51% 15%, 71% 15%, 71% 0%);
+    --clip-path-2: polygon(0% 0%, 0% 100%, 10% 100%, 10% 30%, 49% 30%, 49% 55%, 49% 55%, 49% 85%, 10% 85%, 10% 100%, 51% 100%, 51% 55%, 69% 55%, 69% 55%, 90% 55%, 90% 80%, 51% 80%, 51% 100%, 100% 100%, 100% 0%, 69% 0%, 69% 55%, 49% 55%, 49% 15%, 69% 15%, 69% 0%);
+    --clip-path-3: polygon(0% 0%, 0% 100%, 10% 100%, 10% 45%, 39% 45%, 39% 55%, 49% 55%, 49% 85%, 10% 85%, 10% 100%, 51% 100%, 51% 55%, 59% 55%, 59% 40%, 90% 40%, 90% 80%, 51% 80%, 51% 100%, 100% 100%, 100% 0%, 59% 0%, 59% 55%, 39% 55%, 39% 15%, 59% 15%, 59% 0%);
+    --clip-path-4: polygon(0% 0%, 0% 100%, 10% 100%, 10% 55%, 31% 55%, 31% 55%, 49% 55%, 49% 85%, 10% 85%, 10% 100%, 51% 100%, 51% 55%, 51% 55%, 51% 25%, 90% 25%, 90% 80%, 51% 80%, 51% 100%, 100% 100%, 100% 0%, 51% 0%, 51% 55%, 31% 55%, 31% 15%, 51% 15%, 51% 0%);
+   --clip-path-5: polygon(0% 0%, 0% 100%, 10% 100%, 10% 65%, 39% 65%, 39% 65%, 49% 65%, 49% 85%, 10% 85%, 10% 100%, 51% 100%, 51% 55%, 51% 55%, 51% 15%, 90% 15%, 90% 80%, 51% 80%, 51% 100%, 100% 100%, 100% 0%, 49% 0%, 49% 55%, 29% 55%, 29% 15%, 49% 15%, 49% 0%);
+
+   --animation-time: 5s;
+
+
+   position: relative;
+   overflow: hidden;
+
+   &__container {
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+   }
+
+   &__container > *:not([class]) {
+      position: relative;
+      animation: img-animation var(--animation-time) linear infinite;
+
+      min-width: 100%;
+   }
+   
+   &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+     }
+
+   &__mask {
+      position: absolute;
+      inset: 0;
+      background: rgb(143,216,246);
+      background: linear-gradient(130deg, rgba(143,216,246,1) 50%, rgba(250,126,214,1) 100%);
+      animation: clip-path-animation;
+      // animation: clip-path-animation, viewport-animation;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear, ease;
+      animation-duration: var(--animation-time), 28s;
+   }
+
+   &__title {
+      position: absolute;
+      bottom: 5vh;
+      left: 50%;
+      font-size: 20vh;
+      text-transform: uppercase;
+      font-family: var(--ff-title);
+      font-weight: lighter;
+      color: var(--clr-white);
+      z-index: 100;
+      translate: -50%;
+   }
+}
+
+// пауза равна 30% от общего времени
+// @keyframes clip-path-animation {
+//    0%, 30% {
+//       clip-path: var(--clip-path-1);
+//    }
+
+//    31% {
+//       clip-path: var(--clip-path-2);
+
+//    }
+//    38% {
+//       clip-path: var(--clip-path-3);
+
+//    }
+
+//    45% {
+//       clip-path: var(--clip-path-4);
+//    }
+
+//    50%, 80% {
+//       clip-path: var(--clip-path-5);
+//    }
+
+//    85% {
+//       clip-path: var(--clip-path-4);
+//    }
+
+//    92% {
+//       clip-path: var(--clip-path-3);
+
+//    }
+
+//    98% {
+//       clip-path: var(--clip-path-2);
+
+//    }
+
+//     100% {
+//       clip-path: var(--clip-path-1);
+//    }
+
+   
+// }
+
+// пауза равна 40% от общего времени
+@keyframes clip-path-animation {
+   0%, 40% {
+      clip-path: var(--clip-path-1);
+   }
+
+   42.5% {
+      clip-path: var(--clip-path-2);
+
+   }
+   45% {
+      clip-path: var(--clip-path-3);
+
+   }
+
+   47.5% {
+      clip-path: var(--clip-path-4);
+   }
+
+   50%, 90% {
+      clip-path: var(--clip-path-5);
+   }
+
+   92.5% {
+      clip-path: var(--clip-path-4);
+   }
+
+   95% {
+      clip-path: var(--clip-path-3);
+
+   }
+
+   97.5% {
+      clip-path: var(--clip-path-2);
+
+   }
+
+    100% {
+      clip-path: var(--clip-path-1);
+   }
+
+   
+}
+
+@keyframes viewport-animation {
+   0%, 12%, 28%, 66%, 78%, 100% {
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+   }
+
+   2%, 10%, 30%, 38%, 56%, 64%, 80%, 88% {
+      top: 18%;
+      right: -11.5%;
+      bottom: -18%;
+      left: 11.5%;
+   }
+
+   42%, 52%, 92%, 98% {
+      top: -18%;
+      right: 11.5%;
+      bottom: 18%;
+      left: -11.5%;
+   }
+
+
+}
+
+@keyframes img-animation {
+   0%, 39.2%, 100% {
+      left: 0;
+   }
+   50%, 89.2% {
+      left: -100%;
+   }
+}
